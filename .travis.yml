@@ -6,8 +6,8 @@ services:
 before_install:
     - docker build -t sereniti/multi-docker -f ./client/Dockerfile.dev ./client
 ## tests 
-script:
-    - docker run serenitis/multi-docker:latest npm test -- --coverage
+#script:
+#    - docker run serenitis/multi-docker:latest npm test -- --coverage
 
 after_success:
     - docker build -t sereniti/multi-client ./client
