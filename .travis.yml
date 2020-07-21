@@ -4,25 +4,25 @@ services:
     - docker
 
 before_install:
-    - docker build -t sereniti/multi-docker -f ./client/Dockerfile.dev ./client
+    - docker build -t panteonmsdocker/multi-docker -f ./client/Dockerfile.dev ./client
 ## tests 
 #script:
 #    - docker run serenitis/multi-docker:latest npm test -- --coverage
 
 after_success:
-    - docker build -t sereniti/multi-client ./client
-    - docker build -t sereniti/multi-nginx ./nginx
-    - docker build -t sereniti/multi-server ./server
-    - docker build -t sereniti/multi-worker ./worker
+    - docker build -t panteonmsdocker/multi-client ./client
+    - docker build -t panteonmsdocker/multi-nginx ./nginx
+    - docker build -t panteonmsdocker/multi-server ./server
+    - docker build -t panteonmsdocker/multi-worker ./worker
 
 ## log to docker hub, DOCKER_PASSWORD and DOCKER_ID is setup in travis web page under environment
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 ## push to docker
-    - docker push sereniti/multi-client
-    - docker push sereniti/multi-nginx
-    - docker push sereniti/multi-server
-    - docker push sereniti/multi-worker
+    - docker push panteonmsdocker/multi-client
+    - docker push panteonmsdocker/multi-nginx
+    - docker push panteonmsdocker/multi-server
+    - docker push panteonmsdocker/multi-worker
 
 
 
